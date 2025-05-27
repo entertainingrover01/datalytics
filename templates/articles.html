@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ article.metadata.title }} - Datalytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=DM+Sans:wght@400;500;700&family=Montserrat:wght@400;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Datalytics</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('blog_list') }}">Blog</a>
+      <a href="{{ url_for('about') }}">About</a>
+      <a href="{{ url_for('contact_page') }}">Contact</a>
+    </nav>
+  </header>
+
+  <main class="article-page-content">
+    <section class="section">
+      <h1 class="article-title">{{ article.metadata.title }}</h1>
+      <p class="article-meta">
+        <em>{{ article.metadata.date }}</em> by <span>{{ article.metadata.author }}</span>
+      </p>
+      <div class="article-body">
+        {{ article.html_content | safe }} {# Render HTML content directly, |safe is crucial #}
+      </div>
+      <a href="{{ url_for('blog_list') }}" class="back-to-blog">&larr; Back to all articles</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Datalytics. All rights reserved.</p>
+  </footer>
+</body>
+</html>

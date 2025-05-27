@@ -1,0 +1,1256 @@
+/* CSS Variables for consistent theming */
+:root {
+  --primary-color: #e06c4c; /* Existing primary color */
+  --text-color: #333;
+  --bg-color: #fff;
+  --font-heading: 'Fraunces', serif; /* Used for main headings */
+  --font-body: 'Open Sans', sans-serif; /* General body text */
+  --secondary-font: 'Montserrat', sans-serif; /* Used for subheadings, labels, buttons */
+  --accent-font: 'DM Sans', sans-serif; /* New font for specific elements like contact info text */
+  --light-text-color: #555;
+  --border-color: #ccc;
+  --input-bg: #fafafa;
+  --light-bg-peach: #fdf2ec; /* Lighter background for hero/sections */
+  --form-bg-color: #ffffff;
+  --form-border-radius: 8px;
+  --form-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  /* New variables for about page */
+  --about-image-width: 40%;
+  --about-text-width: 55%;
+  --about-detail-color: #777;
+}
+
+/* Universal box-sizing for easier layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styles */
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background: var(--bg-color);
+  line-height: 1.6;
+}
+
+/* Header styling */
+header {
+  background: var(--bg-color);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+/* Navigation link styling */
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+/* Hero section styling (specific to index.html) */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--light-bg-peach);
+}
+
+.hero h2 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* General section styling */
+.section {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Blog list specific styling (specific to index.html) */
+/* This section is largely superseded by new blog styles but kept for context if needed */
+.blog-list article {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.blog-list h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+
+/* --- NEW CONTACT PAGE STYLES --- */
+
+.contact-section {
+    padding: 4rem 2rem;
+    max-width: 1200px; /* Wider container for the new layout */
+    margin: 2rem auto;
+    background-color: var(--bg-color);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Info column slightly smaller than form */
+    gap: 4rem; /* Increased gap between columns */
+    align-items: flex-start;
+    padding: 0 2rem; /* Inner padding for the grid */
+}
+
+/* Common heading styles for contact page */
+.contact-heading, .form-heading, .social-heading {
+    font-family: var(--font-heading);
+    font-size: 2.5rem; /* Larger headings */
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.contact-description {
+    font-family: var(--accent-font); /* DM Sans for body text */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--light-text-color);
+    margin-bottom: 2.5rem;
+}
+
+.contact-info-col {
+    padding-right: 2rem; /* Add some space to the right of info column */
+}
+
+.contact-details {
+    margin-bottom: 2.5rem;
+}
+
+.detail-item {
+    margin-bottom: 1.2rem;
+    font-family: var(--accent-font);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.detail-item strong {
+    display: block; /* Make strong text appear on its own line */
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--primary-color); /* Highlight address/phone/email labels */
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.social-links-new {
+    margin-top: 2rem;
+}
+
+.social-links-new .social-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-link {
+    display: block; /* Each social link on a new line */
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: var(--accent-font);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.new-contact-form .form-field {
+    margin-bottom: 1.5rem;
+}
+
+.new-contact-form label {
+    display: block;
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.new-contact-form input,
+.new-contact-form textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.new-contact-form input:focus,
+.new-contact-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 8px rgba(224, 108, 76, 0.2);
+}
+
+.submit-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2.5rem; /* Larger padding for button */
+    border: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block; /* Allows padding to work correctly */
+}
+
+.submit-button:hover {
+  background-color: #cc5c3e; /* A slightly darker shade of primary color */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 1.5rem; /* Increased padding */
+  background: #f8f8f8;
+  margin-top: 4rem; /* More space above footer */
+  color: var(--light-text-color);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  border-top: 1px solid #eee; /* Subtle top border */
+}
+
+/* Responsive adjustments for contact page */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 3rem;
+        padding: 0 1rem;
+    }
+    .contact-info-col {
+        padding-right: 0;
+        text-align: center; /* Center content in info column */
+    }
+    .contact-details, .social-links-new {
+        text-align: center;
+    }
+    .detail-item strong {
+        display: inline; /* Keep strong text inline with value */
+        margin-right: 0.5rem;
+    }
+    .social-link {
+        display: inline-block; /* Social links inline on smaller screens */
+        margin: 0 0.8rem 0.8rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    header h1 {
+        margin-bottom: 1rem;
+    }
+    nav a {
+        margin: 0 0.5rem;
+    }
+    .contact-section {
+        padding: 2rem 1rem;
+    }
+    .contact-heading, .form-heading {
+        font-size: 2rem;
+    }
+    .contact-description {
+        font-size: 1rem;
+    }
+}
+
+
+/* --- ABOUT PAGE STYLES --- */
+
+.about-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background-color: var(--bg-color);
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: nowrap; /* MODIFIED: Prevents wrapping on desktop */
+    flex-direction: row; /* Image on the left, text on the right */
+    gap: 4rem; /* Spacing between image and text */
+    align-items: center; /* Align items vertically */
+    padding: 0 2rem;
+}
+
+.about-image {
+    flex: 0 0 var(--about-image-width); /* Fixed width for image */
+    max-width: var(--about-image-width);
+    border-radius: 8px;
+    overflow: hidden; /* Ensure image corners are rounded */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below image */
+    object-fit: cover; /* Cover the area without distortion */
+}
+
+.about-text {
+    flex: 1; /* MODIFIED: Allows text to grow and fill remaining space */
+    /* Removed max-width here for more flexibility */
+}
+
+.about-heading {
+    font-family: var(--font-heading);
+    font-size: 2.8rem; /* Larger heading for about page */
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.about-description {
+    font-family: var(--accent-font); /* DM Sans for body text */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--light-text-color);
+    margin-bottom: 1.5rem; /* Space between paragraphs */
+}
+
+.about-details {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.about-details .detail-item {
+    margin-bottom: 1rem;
+    font-family: var(--accent-font);
+    color: var(--about-detail-color);
+}
+
+.about-details .detail-item strong {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--text-color); /* Stronger color for labels */
+    min-width: 100px; /* Align labels */
+}
+
+/* Reusing social-links-new and social-link from contact.html */
+/* No need to redefine them if they are visually consistent */
+
+/* Responsive adjustments for about page */
+@media (max-width: 992px) {
+    .about-content {
+        flex-direction: column; /* Stack image and text on smaller screens */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens for consistency */
+        gap: 3rem;
+        padding: 0 1rem;
+        text-align: center; /* Center text content */
+    }
+    .about-image, .about-text {
+        flex: 0 0 100%; /* Take full width */
+        max-width: 100%;
+    }
+    .about-image {
+        margin-bottom: 2rem; /* Space between image and text when stacked */
+    }
+    .about-details {
+        text-align: left; /* Keep details left-aligned for readability */
+        padding-left: 2rem; /* Indent details */
+        padding-right: 2rem;
+    }
+    .about-details .detail-item strong {
+        min-width: unset; /* Remove fixed width */
+        margin-right: 0.5rem;
+    }
+    .social-links-new {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 2rem 1rem;
+    }
+    .about-heading {
+        font-size: 2.2rem;
+    }
+    .about-description {
+        font-size: 1rem;
+    }
+    .about-details {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* --- Blog Page Specific Styles --- */
+
+.blog-list-page .section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.blog-page-heading {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.blog-item {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+}
+
+.blog-item .blog-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.blog-item .blog-title a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.blog-item .blog-title a:hover {
+    color: var(--primary-color);
+}
+
+.blog-item .blog-meta {
+    font-family: var(--accent-font);
+    font-size: 0.95rem;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+}
+
+.blog-item .blog-meta span {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.blog-item .blog-summary {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.read-more {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: #cc5c3e;
+}
+
+.view-all-link {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.view-all-link a {
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: text-decoration 0.3s ease;
+}
+
+.view-all-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- Individual Article Page Styles --- */
+
+.article-page-content .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.article-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.article-meta {
+    font-family: var(--accent-font);
+    font-size: 1rem;
+    color: var(--light-text-color);
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.article-meta span {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.article-body {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    max-width: 800px; /* Limit content width for readability */
+    margin: 0 auto 3rem auto;
+    text-align: left; /* Ensure content is left-aligned */
+}
+
+/* Basic styling for Markdown elements within article-body */
+.article-body h1, .article-body h2, .article-body h3, .article-body h4 {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.article-body h1 { font-size: 2.5rem; }
+.article-body h2 { font-size: 2rem; }
+.article-body h3 { font-size: 1.75rem; }
+.article-body h4 { font-size: 1.5rem; }
+
+.article-body p {
+    margin-bottom: 1rem;
+}
+
+.article-body ul, .article-body ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    list-style-type: disc;
+}
+
+.article-body ol {
+    list-style-type: decimal;
+}
+
+.article-body a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.article-body strong {
+    font-weight: 700;
+}
+
+.article-body em {
+    font-style: italic;
+}
+
+.back-to-blog {
+    display: block;
+    text-align: center;
+    margin-top: 3rem;
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: text-decoration 0.3s ease;
+}
+
+.back-to-blog:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for blog/article pages */
+@media (max-width: 768px) {
+    .blog-page-heading, .article-title {
+        font-size: 2rem;
+    }
+    .blog-item {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .blog-item .blog-title {
+        font-size: 1.5rem;
+    }
+    .article-body {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    .article-body h1 { font-size: 2rem; }
+    .article-body h2 { font-size: 1.75rem; }
+    .article-body h3 { font-size: 1.5rem; }
+    .article-body h4 { font-size: 1.25rem; }
+}
+/* --- New Home Page Introduction/Hero Styles --- */
+
+.hero-intro-section {
+    background: var(--light-bg-peach);
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4rem; /* Space before next section */
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.let-s-talk-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10; /* Ensure button is on top */
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Text wider than image */
+    gap: 4rem;
+    align-items: center;
+    padding-top: 3rem; /* Space for the "LET'S TALK" button */
+    padding-bottom: 3rem;
+}
+
+.intro-text {
+    padding-right: 2rem;
+}
+
+.welcome-heading {
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--light-text-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.name-heading {
+    font-family: var(--font-heading);
+    font-size: 3.8rem;
+    color: var(--primary-color);
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+}
+
+.role-text {
+    font-family: var(--accent-font);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.intro-description {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.button-primary, .button-secondary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.button-primary:hover {
+    background-color: #cc5c3e; /* Darker peach */
+    transform: translateY(-2px);
+}
+
+.button-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.button-secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.join-insider-button {
+    margin-top: 1rem; /* Space from description */
+}
+
+.intro-image {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.image-credit {
+    font-family: var(--accent-font);
+    font-size: 0.8rem;
+    color: var(--light-text-color);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.stats-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-top: 4rem; /* Space from intro grid */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.stat-label {
+    font-family: var(--secondary-font);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* --- Featured In Section --- */
+.featured-in-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #f5f5f5; /* Light grey background */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 4rem;
+}
+
+.featured-in-section h3 {
+    font-family: var(--secondary-font);
+    font-size: 1.2rem;
+    color: var(--light-text-color);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 2rem;
+}
+
+.featured-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.featured-logos img {
+    max-width: 120px; /* Adjust as needed */
+    height: auto;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.featured-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+
+/* --- Latest Articles Grid on Home Page --- */
+.blog-list-home {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    text-align: center; /* Center the heading */
+}
+
+.blog-list-home h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+.latest-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.blog-list-home .blog-item {
+    text-align: left; /* Align text within article cards */
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.blog-list-home .blog-item:hover {
+    transform: translateY(-5px);
+}
+
+.blog-list-home .blog-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.blog-list-home .blog-title a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.blog-list-home .blog-title a:hover {
+    color: var(--primary-color);
+}
+
+.blog-list-home .blog-meta {
+    font-family: var(--accent-font);
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+}
+
+.blog-list-home .blog-summary {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Reusing .read-more and .view-all-link from blog.css for consistency */
+
+
+/* --- Data Quotes Section --- */
+.data-quotes-section {
+    background-color: var(--light-bg-peach);
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.data-quotes-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+.quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.quote-item {
+    background-color: var(--bg-color);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quote-item p {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.quote-item .quote-author {
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    text-align: right;
+    display: block;
+    margin-top: auto; /* Pushes author to the bottom */
+}
+
+/* --- Highlights Section (New Things) --- */
+.highlights-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.highlights-heading {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.highlights-description {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.highlight-item {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+    text-align: left; /* Align text within highlight cards */
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.highlight-item h3 a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.highlight-item h3 a:hover {
+    color: var(--primary-color);
+}
+
+.highlight-item p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--light-text-color);
+}
+
+
+/* --- Call to Action Section --- */
+.call-to-action-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-heading {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.cta-description {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: 700;
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+}
+
+.cta-button:hover {
+    background-color: #f0f0f0;
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+
+/* Responsive adjustments for new home page sections */
+@media (max-width: 992px) {
+    .intro-grid {
+        grid-template-columns: 1fr; /* Stack columns */
+        gap: 2.5rem;
+        padding-top: 2rem;
+    }
+    .intro-text {
+        padding-right: 0;
+        text-align: center; /* Center text when stacked */
+    }
+    .name-heading {
+        font-size: 3rem;
+    }
+    .role-text {
+        font-size: 1.2rem;
+    }
+    .let-s-talk-button {
+        position: static; /* Remove absolute positioning */
+        margin: 0 auto 2rem auto; /* Center button */
+        display: block; /* Make it a block for centering */
+    }
+    .stats-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    .stat-item {
+        width: 100%;
+    }
+    .featured-logos {
+        gap: 1.5rem;
+    }
+    .blog-list-home h2, .data-quotes-section h2, .highlights-heading, .cta-heading {
+        font-size: 2rem;
+    }
+    .intro-image img {
+        max-width: 80%; /* Limit image width on smaller screens */
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-intro-section, .featured-in-section, .data-quotes-section, .highlights-section, .call-to-action-section {
+        padding: 2.5rem 1rem;
+    }
+    .name-heading {
+        font-size: 2.5rem;
+    }
+    .role-text {
+        font-size: 1.1rem;
+    }
+    .intro-description {
+        font-size: 1rem;
+    }
+    .stats-bar {
+        margin-top: 3rem;
+    }
+    .stat-number {
+        font-size: 2rem;
+    }
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    .featured-logos img {
+        max-width: 100px;
+    }
+    .latest-articles-grid, .quotes-grid, .highlight-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 1.5rem;
+    }
+    .blog-list-home .blog-title {
+        font-size: 1.6rem;
+    }
+    .quote-item p {
+        font-size: 1rem;
+    }
+    .highlights-description {
+        font-size: 1rem;
+    }
+    .highlight-item h3 {
+        font-size: 1.4rem;
+    }
+    .cta-heading {
+        font-size: 2rem;
+    }
+    .cta-description {
+        font-size: 1rem;
+    }
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+/* Existing styles for header h1 */
+header h1 {
+  font-family: 'Playfair Display', serif; /* or your preferred font */
+  font-size: 3.5em; /* Make the logo bigger */
+  color: #333; /* Adjust color as needed */
+  text-align: center; /* Center the logo */
+  margin: 0; /* Remove default margin */
+  padding: 20px 0; /* Add some padding */
+  position: relative; /* Needed for pseudo-elements for animation */
+  display: inline-block; /* Allows width/height and animation */
+  /* Animation properties */
+  animation: dataGlitch 5s infinite linear alternate; /* Apply glitch animation */
+}
+
+/* Keyframes for the data-related glitch animation */
+@keyframes dataGlitch {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  2% {
+    transform: translate(2px, -2px);
+    opacity: 0.9;
+  }
+  4% {
+    transform: translate(-3px, 3px);
+    opacity: 0.8;
+  }
+  6% {
+    transform: translate(1px, -1px);
+    opacity: 1;
+  }
+  8% {
+    transform: translate(-2px, 2px);
+    opacity: 0.9;
+  }
+  10% {
+    transform: translate(3px, -3px);
+    opacity: 0.85;
+  }
+  12% {
+    transform: translate(-1px, 1px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+/* Existing styles for header h1 */
+header h1 {
+  font-family: 'Playfair Display', serif; /* or your preferred font */
+  font-size: 3.8em; /* Made it slightly bigger */
+  color: #333; /* Adjust color as needed, or make it lighter for scanning effect */
+  text-align: center; /* Center the logo */
+  margin: 0; /* Remove default margin */
+  padding: 20px 0; /* Add some padding */
+  position: relative; /* Needed for more advanced effects */
+  display: inline-block; /* Allows transformation and animation */
+
+  /* Data Scan Animation */
+  background: linear-gradient(90deg, #333 0%, #333 50%, rgba(51, 51, 51, 0.2) 50%, rgba(51, 51, 51, 0.2) 100%);
+  background-size: 200% 100%; /* Double the width to create scan line */
+  -webkit-background-clip: text; /* Clip background to text shape */
+  background-clip: text;
+  color: transparent; /* Make text color transparent to show background */
+  animation: dataScan 4s infinite linear; /* Apply the new scan animation */
+}
+
+/* Keyframes for the data scan animation */
+@keyframes dataScan {
+  0% {
+    background-position: 100% 0; /* Start scan line at the right */
+  }
+  100% {
+    background-position: -100% 0; /* Move scan line to the left */
+  }
+}
+
+/* You might want to adjust general header padding if needed to accommodate larger logo */
+header {
+  padding: 10px 20px; /* Adjust as needed */
+  display: flex; /* Helps with alignment */
+  justify-content: space-between; /* Pushes h1 and nav apart */
+  align-items: center; /* Vertically centers items */
+}
+.intro-image {
+  margin-top: -11rem;
+}
