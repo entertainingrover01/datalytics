@@ -1,8 +1,10 @@
+---
 title: Understanding SCD Type 1 and Type 2 in Data Warehousing
 author: Krishna Chapagain
 date: 2025-06-21
 summary: A beginner-friendly introduction to Slowly Changing Dimensions (SCD) Types 1 and 2—what they are, when to use them, and how they impact your data architecture.
 slug: scd-type-1-vs-type-2
+---
 
 Understanding SCD Type 1 and Type 2 in Data Warehousing
 
@@ -74,4 +76,5 @@ Simplicity	✅ Simple	❌ Complex
 Space requirement	✅ Low	❌ Higher
 Use case	Corrections only	Historical analysis
 
-Posted on June 21, 2025
+---
+*Posted on June 21, 2025*
