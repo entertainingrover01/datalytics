@@ -44,7 +44,7 @@ def load_articles():
                             key, value = line.split(':', 1)
                             metadata[key.strip()] = value.strip()
 
-                html_content = markdown.markdown(body)
+                html_content = markdown.markdown(body, extensions=['tables', 'fenced_code', 'nl2br'])
 
                 if 'slug' not in metadata:
                     base_filename = os.path.splitext(filename)[0]
