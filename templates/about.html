@@ -1,38 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Datalytics</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=DM+Sans:wght@400;500;700&family=Montserrat:wght@400;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <header>
-    <h1>Datalytics</h1>
-    <nav>
-      <a href="{{ url_for('home') }}">Home</a>
-      <a href="{{ url_for('blog_list') }}">Blog</a> {# Corrected link #}
-      <a href="{{ url_for('about') }}">About</a>
-      <a href="{{ url_for('contact_page') }}">Contact</a>
-    </nav>
-  </header>
+{% extends 'base.html' %} {# Extends the base.html template #}
 
+{% block title %}About - Datalytics{% endblock %} {# Sets the page title #}
+
+{% block content %} {# This block contains the main content for the about page #}
   <main class="about-section">
     <div class="about-content">
-      <div class="about-image"> <img src="{{ url_for('static', filename='xyz.jpeg') }}" alt="Person working with data" />
+      <div class="about-image">
+        <img src="{{ url_for('static', filename='xyz.jpeg') }}" alt="Person working with data" />
       </div>
-      <div class="about-text"> <h2 class="about-heading">About Me</h2>
+      <div class="about-text">
+        <h2 class="about-heading">About Me</h2>
         <p class="about-description">
-          Welcome to Datalytics, a personal blog where I explore the fascinating intersection of data engineering and science. My name is Krishna, and I'm a data enthusiast with a passion for all things culinary. This blog is my way of sharing fun, insightful, and often surprising explorations into the world of analytics.
+          Welcome to Datalytics, a space where I, Krishna Prasad Chapagain, blend my passion for Data Science and Engineering with insightful articles. With a Master's in Data Science, I focus on transforming complex data into clear, actionable insights. This blog is my platform to share knowledge, explore new technologies, and discuss the impact of data in our world.
         </p>
         <p class="about-description">
-          Here, you'll find articles that delve into analysis using clustering techniques, visualizations of data with Python, and much more. Whether you're a fellow data scientist, a data lover, or simply curious about the stories hidden within data, I hope you'll find something to pique your interest.
+          My journey in data has involved working with various technologies and methodologies, always aiming to build robust, scalable data solutions and derive meaningful conclusions. I believe in continuous learning and sharing that journey with the community.
         </p>
         <div class="about-details">
           <div class="detail-item">
-            <strong>Experience:</strong>
-            <span>5+ Years</span>
+            <strong>Location:</strong>
+            <span>Bengaluru, Karnataka, India</span>
           </div>
           <div class="detail-item">
             <strong>Skills:</strong>
@@ -64,9 +51,4 @@
       </div>
     </div>
   </main>
-
-  <footer>
-    <p>&copy; 2025 Datalytics. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+{% endblock %} {# End of the content block #}

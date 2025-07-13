@@ -1,46 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog - Datalytics Articles</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=DM+Sans:wght@400;500;700&family=Montserrat:wght@400;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <header>
-    <h1>Datalytics</h1>
-    <nav>
-      <a href="{{ url_for('home') }}">Home</a>
-      <a href="{{ url_for('blog_list') }}">Blog</a> {# Updated link to blog list #}
-      <a href="{{ url_for('about') }}">About</a>
-      <a href="{{ url_for('contact_page') }}">Contact</a>
-    </nav>
-  </header>
+{% extends 'base.html' %} {# This line extends the base.html template #}
 
-  <main class="blog-list-page">
-    <section class="section">
-      <h2 class="blog-page-heading">All Articles</h2>
+{% block title %}Blog - Datalytics Articles{% endblock %} {# Sets the specific title for this page #}
 
-      {% if articles %}
-        {% for article in articles %}
-          <article class="blog-item">
-            <h3 class="blog-title"><a href="{{ url_for('article_detail', slug=article.metadata.slug) }}">{{ article.metadata.title }}</a></h3>
-            <p class="blog-meta">
-              <em>{{ article.metadata.date }}</em> by <span>{{ article.metadata.author }}</span>
-            </p>
-            <p class="blog-summary">{{ article.metadata.summary }}</p>
-            <a href="{{ url_for('article_detail', slug=article.metadata.slug) }}" class="read-more">Read More &rarr;</a>
-          </article>
-        {% endfor %}
+{% block content %} {# This block contains the unique content for the blog list page #}
+  <section class="section">
+    <div class="category-filter-section">
+      <h3>Categories:</h3>
+      <ul class="category-list">
+        <li><a href="{{ url_for('blog_list') }}" {% if not category_filter %}class="active"{% endif %}>All</a></li>
+        {% if unique_categories %}
+          {% for category in unique_categories %}
+            <li><a href="{{ url_for('articles_by_category', category_name=category.lower().replace(' ', '-')) }}" {% if category_filter == category %}class="active"{% endif %}>{{ category }}</a></li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+
+    <h2 class="blog-page-heading">
+      {% if category_filter %}
+        Articles in {{ category_filter }}
       {% else %}
-        <p>No articles found yet. Check back soon!</p>
+        All Articles
       {% endif %}
-    </section>
-  </main>
+    </h2>
 
-  <footer>
-    <p>&copy; 2025 Datalytics. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    {% if articles %} {# Check if the list of articles is not empty #}
+      {% for article in articles %} {# Loop through each individual article #}
+        <article class="blog-item">
+          <h3 class="blog-title"><a href="{{ url_for('article_detail', slug=article.metadata.slug) }}">{{ article.metadata.title }}</a></h3>
+          <p class="blog-meta">
+            <em>{{ article.metadata.date }}</em> by <span>{{ article.metadata.author }}</span>
+            {% if article.metadata.category %}
+              <span class="blog-category"> | Category: {{ article.metadata.category }}</span>
+            {% endif %}
+          </p>
+          <p class="blog-summary">{{ article.metadata.summary }}</p>
+          <a href="{{ url_for('article_detail', slug=article.metadata.slug) }}" class="read-more">Read More &rarr;</a>
+        </article>
+      {% endfor %}
+    {% else %}
+      <p>No articles found.</p>
+    {% endif %}
+  </section>
+{% endblock %} {# End of the content block #}

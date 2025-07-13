@@ -1,76 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Datalytics</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=DM+Sans:wght@400;500;700&family=Montserrat:wght@400;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <header>
-    <h1>Datalytics</h1>
-    <nav>
-      <a href="{{ url_for('home') }}">Home</a>
-      <a href="{{ url_for('blog_list') }}">Blog</a> {# Corrected link #}
-      <a href="{{ url_for('about') }}">About</a> <a href="{{ url_for('contact_page') }}">Contact</a>
-    </nav>
-  </header>
+{% extends 'base.html' %} {# Extends the base.html template #}
 
-  <main id="primary" class="site-main">
-    <div class="contact-section">
-      <div class="contact-grid">
-        <div class="contact-info-col">
-          <h2 class="contact-heading">Contact Me</h2>
-          <p class="contact-description">Please fill up the form, I will get a mail after which I will reach out to you ! Thank you </p>
+{% block title %}Contact - Datalytics{% endblock %} {# Sets the page title #}
 
-          <div class="contact-details">
-            <div class="detail-item">
-              <strong>Address</strong>
-              <span>1200 W Harrison St, Chicago, IL 60607, USA.</span>
-            </div>
-            <div class="detail-item">
-              <strong>Phone</strong>
-              <span>+01 - *** *** ***</span>
-            </div>
-            <div class="detail-item">
-              <strong>Email</strong>
-              <span>krishnachapai500@gmail.com</span>
-            </div>
-          </div>
-s
-          <div class="social-links-new">
-            <h3 class="social-heading">Follow Me</h3>
-            <a href="#" class="social-link">1.2M+ Subscribers</a>
-            <a href="#" class="social-link">1.8M+ Followers</a>
-            <a href="#" class="social-link">800K+ Readers</a>
-          </div>
-        </div>
+{% block content %} {# This block contains the main content for the contact page #}
+  <section class="section contact-section">
+    <h2 class="contact-heading">Get In Touch</h2>
+    <p class="contact-subheading">Have a question or just want to say hello? Fill out the form below or reach out directly.</p>
 
-        <div class="contact-form-col">
-          <h2 class="form-heading">Let's Talk</h2>
-          <form class="new-contact-form" action="https://formspree.io/f/xovwnyrj" method="POST">
-            <div class="form-field">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-            <div class="form-field">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-            <div class="form-field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="7" required></textarea>
-            </div>
-            <button type="submit" class="submit-button">Send Message</button>
-          </form>
-        </div>
-      </div>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:krishnachapai500@gmail.com">krishnachapai500@gmail.com</a></p>
+      {# You can add other contact info here like phone or social media links if desired #}
     </div>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 Datalytics. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    <form class="contact-form" action="#" method="POST"> {# Action can be updated to a Flask route for form submission #}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" />
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+      <button type="submit" class="submit-button">Send Message</button>
+    </form>
+  </section>
+{% endblock %} {# End of the content block #}

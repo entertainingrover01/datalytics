@@ -7,8 +7,6 @@ from datetime import timedelta
 import feedparser
 import threading
 import time
-# import requests # Not strictly needed if only using feedparser for RSS
-# from bs4 import BeautifulSoup # Not strictly needed if only using feedparser for RSS
 
 app = Flask(__name__)
 
@@ -26,43 +24,53 @@ external_highlights_cache = {
 
 def load_articles():
     articles = []
-    for filename in os.listdir(ARTICLES_DIR):
-        if filename.endswith('.md'):
-            filepath = os.path.join(ARTICLES_DIR, filename)
-            with open(filepath, 'r', encoding='utf-8') as f:
-                content = f.read()
+    # Use os.walk to go through subdirectories
+    for root, dirs, files in os.walk(ARTICLES_DIR):
+        for filename in files:
+            if filename.endswith('.md'):
+                filepath = os.path.join(root, filename) #
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    content = f.read()
 
-                front_matter_match = re.match(r'---\n(.*?)\n---(.*)', content, re.DOTALL)
-                metadata = {}
-                body = content
-                if front_matter_match:
-                    front_matter_str = front_matter_match.group(1)
-                    body = front_matter_match.group(2).strip()
+                    front_matter_match = re.match(r'---\n(.*?)\n---(.*)', content, re.DOTALL)
+                    metadata = {}
+                    body = content
+                    if front_matter_match:
+                        front_matter_str = front_matter_match.group(1)
+                        body = front_matter_match.group(2).strip()
 
-                    for line in front_matter_str.split('\n'):
-                        if ':' in line:
-                            key, value = line.split(':', 1)
-                            metadata[key.strip()] = value.strip()
+                        for line in front_matter_str.split('\n'):
+                            if ':' in line:
+                                key, value = line.split(':', 1)
+                                metadata[key.strip()] = value.strip()
 
-                html_content = markdown.markdown(body, extensions=['tables', 'fenced_code', 'nl2br'])
+                    # Ensure 'tables', 'fenced_code', 'nl2br' extensions are included for proper Markdown rendering
+                    html_content = markdown.markdown(body, extensions=['tables', 'fenced_code', 'nl2br'])
 
-                if 'slug' not in metadata:
-                    base_filename = os.path.splitext(filename)[0]
-                    metadata['slug'] = base_filename.lower().replace(' ', '-')
+                    if 'slug' not in metadata:
+                        base_filename = os.path.splitext(filename)[0]
+                        metadata['slug'] = base_filename.lower().replace(' ', '-')
 
-                if 'date' in metadata:
-                    try:
-                        metadata['date_obj'] = datetime.datetime.strptime(metadata['date'], '%Y-%m-%d')
-                    except ValueError:
-                        metadata['date_obj'] = None
-                else:
-                    metadata['date_obj'] = None
+                    # Extract category based on subdirectory
+                    relative_path = os.path.relpath(root, ARTICLES_DIR) #
+                    if relative_path != '.': # Avoid using '.' for the root articles directory
+                        metadata['category'] = relative_path.replace('-', ' ').title() # Capitalize words
+                    else:
+                        metadata['category'] = 'Uncategorized' # Or 'General', 'Miscellaneous'
 
-                articles.append({
-                    'metadata': metadata,
-                    'html_content': html_content,
-                    'filename': filename
-                })
+                    if 'date' in metadata:
+                        try:
+                            metadata['date_obj'] = datetime.datetime.strptime(metadata['date'], '%Y-%m-%d')
+                        except ValueError:
+                            metadata['date_obj'] = datetime.datetime.min # Fallback to a very old date
+                    else:
+                        metadata['date_obj'] = datetime.datetime.min # Fallback if no date is provided
+
+                    articles.append({
+                        'metadata': metadata,
+                        'html_content': html_content,
+                        'filename': filename
+                    })
 
     articles.sort(key=lambda x: x['metadata'].get('date_obj', datetime.datetime.min), reverse=True)
     return articles
@@ -133,7 +141,26 @@ def contact_page():
 
 @app.route('/blog')
 def blog_list():
-    return render_template('blog.html', articles=all_articles)
+    unique_categories = sorted(list(set([
+        article['metadata']['category']
+        for article in all_articles if 'category' in article['metadata']
+    ])))
+    return render_template('blog.html', articles=all_articles, unique_categories=unique_categories)
+
+@app.route('/blog/category/<category_name>')
+def articles_by_category(category_name):
+    filtered_articles = [
+        article for article in all_articles
+        if article['metadata'].get('category', '').lower().replace(' ', '-') == category_name.lower()
+    ]
+    # Pass the original category name for display
+    display_category_name = category_name.replace('-', ' ').title()
+    unique_categories = sorted(list(set([
+        article['metadata']['category']
+        for article in all_articles if 'category' in article['metadata']
+    ])))
+    return render_template('blog.html', articles=filtered_articles, category_filter=display_category_name, unique_categories=unique_categories)
+
 
 @app.route('/blog/<slug>')
 def article_detail(slug):
