@@ -81,7 +81,6 @@ def fetch_and_cache_external_highlights():
     print(f"[{datetime.datetime.now()}] Attempting to fetch external RSS feed from: {RSS_FEED_URL}")
     try:
         feed = feedparser.parse(RSS_FEED_URL)
-        print(feed)
         new_articles = []
         # Limit to 6 articles for display, consistent with the placeholder
         for entry in feed.entries[:6]:
