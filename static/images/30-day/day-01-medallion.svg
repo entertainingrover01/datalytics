@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <rect width="1200" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <text x="600" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">The Medallion Architecture</text>
+  <text x="600" y="62" text-anchor="middle" font-size="15" fill="#64748b">Raw data gets cleaner and more trusted at every layer</text>
+
+  <!-- Sources -->
+  <rect x="30" y="110" width="170" height="150" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="115" y="142" text-anchor="middle" font-size="17" font-weight="700" fill="#0c4a6e">Sources</text>
+  <text x="115" y="172" text-anchor="middle" font-size="14" fill="#334155">Databases</text>
+  <text x="115" y="196" text-anchor="middle" font-size="14" fill="#334155">APIs &amp; files</text>
+  <text x="115" y="220" text-anchor="middle" font-size="14" fill="#334155">Event streams</text>
+
+  <!-- Bronze -->
+  <rect x="260" y="110" width="190" height="150" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+  <text x="355" y="142" text-anchor="middle" font-size="17" font-weight="700" fill="#78350f">Bronze</text>
+  <text x="355" y="172" text-anchor="middle" font-size="14" fill="#334155">Raw, as-is</text>
+  <text x="355" y="196" text-anchor="middle" font-size="14" fill="#334155">Append-only</text>
+  <text x="355" y="220" text-anchor="middle" font-size="14" fill="#334155">Full history</text>
+
+  <!-- Silver -->
+  <rect x="510" y="110" width="190" height="150" rx="12" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="605" y="142" text-anchor="middle" font-size="17" font-weight="700" fill="#1e293b">Silver</text>
+  <text x="605" y="172" text-anchor="middle" font-size="14" fill="#334155">Cleaned</text>
+  <text x="605" y="196" text-anchor="middle" font-size="14" fill="#334155">Validated, deduped</text>
+  <text x="605" y="220" text-anchor="middle" font-size="14" fill="#334155">Typed &amp; joined</text>
+
+  <!-- Gold -->
+  <rect x="760" y="110" width="190" height="150" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="855" y="142" text-anchor="middle" font-size="17" font-weight="700" fill="#713f12">Gold</text>
+  <text x="855" y="172" text-anchor="middle" font-size="14" fill="#334155">Analytics-ready</text>
+  <text x="855" y="196" text-anchor="middle" font-size="14" fill="#334155">Aggregated</text>
+  <text x="855" y="220" text-anchor="middle" font-size="14" fill="#334155">Business metrics</text>
+
+  <!-- Consumers -->
+  <rect x="1010" y="110" width="160" height="150" rx="12" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="1090" y="142" text-anchor="middle" font-size="17" font-weight="700" fill="#134e4a">Consumers</text>
+  <text x="1090" y="172" text-anchor="middle" font-size="14" fill="#334155">Dashboards</text>
+  <text x="1090" y="196" text-anchor="middle" font-size="14" fill="#334155">ML models</text>
+  <text x="1090" y="220" text-anchor="middle" font-size="14" fill="#334155">AI agents</text>
+
+  <!-- Arrows -->
+  <line x1="202" y1="185" x2="256" y2="185" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="452" y1="185" x2="506" y2="185" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="702" y1="185" x2="756" y2="185" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="952" y1="185" x2="1006" y2="185" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="600" y="310" text-anchor="middle" font-size="14" fill="#64748b">Each layer is a table (or set of tables). Nothing is overwritten — bad data is fixed by rebuilding the layer above it.</text>
+</svg>

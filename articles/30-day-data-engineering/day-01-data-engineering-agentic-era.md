@@ -11,6 +11,8 @@ tags: ["Data Engineering", "Agentic AI", "AWS", "Azure", "GCP", "Learning"]
 
 *This is Day 1 of a 30-day plan to learn data engineering across AWS, Azure, and GCP — one article a day, each ending with something to build. Today: the landscape, and why the job changed.*
 
+![Data streams flowing from source systems into a layered lakehouse, feeding dashboards, machine learning models, and an AI agent](/static/images/30-day/day-01-hero.jpg)
+
 ## What changed this month
 
 November 2026 has been a month of announcements that all point the same way: AI agents are no longer demos. They are production workloads — and production workloads need governed data.
@@ -36,6 +38,8 @@ Strip away the job descriptions and the work has an enduring core:
 5. **Govern it.** Who can see what, which columns are PII, where the lineage leads. In financial services this is the job, not a side quest.
 
 What the agentic era adds is a sixth responsibility: **building the interfaces agents use.** Guardrailed NL-to-SQL, validated agent-generated SQL, audit-logged inference — the work I wrote about in the [agentic compliance pipeline](/blog/agentic-compliance-pipeline-aws/), the [Kiro database workflow](/blog/kiro-agentic-database-workflow/), and the [governed NL-to-SQL layer](/blog/governed-nl-to-sql-analytics/) projects. The agent is a new kind of downstream consumer, and it needs the same treatment as any other untrusted service: isolated, decoupled, governed, and fully auditable.
+
+![An AI agent asks a question, which passes through a governed interface of guardrails before reaching the data platform; every request is written to an audit log](/static/images/30-day/day-01-governed-agent.png)
 
 ## The three-cloud map
 
@@ -67,5 +71,9 @@ Learn one column deeply and the other two become translation exercises. That is 
 3. Install DuckDB (`pip install duckdb`) — it will be our local stand-in for a warehouse all month.
 4. Pick a dataset you care about — NYC taxi trips, a Kaggle retail dataset, anything with a few hundred thousand rows — and download it locally.
 5. Sketch, on paper or in a notebook, the medallion version of it: what would your bronze (raw), silver (cleaned), and gold (analytics-ready) layers contain? Keep the sketch; Day 7 builds it.
+
+The layers you're sketching toward look like this:
+
+![Medallion architecture: sources flow into Bronze (raw), Silver (cleaned), and Gold (analytics-ready) layers, which feed dashboards, ML models, and AI agents](/static/images/30-day/day-01-medallion.png)
 
 Tomorrow, Day 2: SQL for data engineering — window functions, CTEs, and reading a query plan like an engineer, not a analyst.
