@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="1200" height="420" fill="#ffffff"/>
+  <text x="600" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Reading a Query Plan — Bottom Up</text>
+  <text x="600" y="62" text-anchor="middle" font-size="15" fill="#64748b">Data flows upward · the expensive node is usually the scan or a sort</text>
+
+  <!-- Output -->
+  <rect x="400" y="85" width="400" height="52" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="600" y="107" text-anchor="middle" font-size="16" font-weight="700" fill="#1e293b">OUTPUT — 2 rows</text>
+  <text x="600" y="128" text-anchor="middle" font-size="13" fill="#64748b">Only the columns the query asked for</text>
+
+  <!-- Order -->
+  <rect x="400" y="155" width="400" height="52" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+  <text x="600" y="177" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">ORDER BY — sort</text>
+  <text x="600" y="198" text-anchor="middle" font-size="13" fill="#64748b">Check: is this the second sort? Paying twice?</text>
+  <line x1="600" y1="137" x2="600" y2="155" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Window -->
+  <rect x="400" y="225" width="400" height="52" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="600" y="247" text-anchor="middle" font-size="16" font-weight="700" fill="#0c4a6e">WINDOW — rank / running total</text>
+  <text x="600" y="268" text-anchor="middle" font-size="13" fill="#64748b">Needs its partition sorted — watch the sort above it</text>
+  <line x1="600" y1="207" x2="600" y2="225" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Filter -->
+  <rect x="400" y="295" width="400" height="52" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="600" y="317" text-anchor="middle" font-size="16" font-weight="700" fill="#134e4a">FILTER — fare &gt; 0</text>
+  <text x="600" y="338" text-anchor="middle" font-size="13" fill="#64748b">Best when pushed into the scan below</text>
+  <line x1="600" y1="277" x2="600" y2="295" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Scan -->
+  <rect x="400" y="365" width="400" height="40" rx="10" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="600" y="390" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">SCAN — trips table</text>
+  <line x1="600" y1="347" x2="600" y2="365" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

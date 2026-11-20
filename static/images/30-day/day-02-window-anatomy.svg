@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <rect width="1200" height="420" fill="#ffffff"/>
+  <text x="600" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">A Window Function in Three Parts</text>
+  <text x="600" y="62" text-anchor="middle" font-size="15" fill="#64748b">OVER ( PARTITION BY … ORDER BY … frame … )</text>
+
+  <!-- Partition -->
+  <rect x="30" y="90" width="360" height="250" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="210" y="122" text-anchor="middle" font-size="17" font-weight="700" fill="#0c4a6e">1 · PARTITION BY</text>
+  <text x="210" y="148" text-anchor="middle" font-size="14" fill="#334155">Splits rows into groups</text>
+  <rect x="60" y="165" width="300" height="34" rx="8" fill="#ffffff" stroke="#0284c7"/><text x="210" y="187" text-anchor="middle" font-size="14" fill="#0f172a">pu_zone 132 · 08:02 · $14.50</text>
+  <rect x="60" y="205" width="300" height="34" rx="8" fill="#ffffff" stroke="#0284c7"/><text x="210" y="227" text-anchor="middle" font-size="14" fill="#0f172a">pu_zone 132 · 09:15 · $21.00</text>
+  <rect x="60" y="245" width="300" height="34" rx="8" fill="#fef3c7" stroke="#b45309"/><text x="210" y="267" text-anchor="middle" font-size="14" fill="#0f172a">pu_zone 236 · 10:05 · $8.00</text>
+  <text x="210" y="315" text-anchor="middle" font-size="13" fill="#64748b">Each group is calculated separately</text>
+
+  <!-- Order -->
+  <rect x="420" y="90" width="360" height="250" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+  <text x="600" y="122" text-anchor="middle" font-size="17" font-weight="700" fill="#78350f">2 · ORDER BY</text>
+  <text x="600" y="148" text-anchor="middle" font-size="14" fill="#334155">Sequences rows inside a group</text>
+  <rect x="450" y="165" width="300" height="34" rx="8" fill="#ffffff" stroke="#b45309"/><text x="600" y="187" text-anchor="middle" font-size="14" fill="#0f172a">1st · 08:02 · $14.50</text>
+  <rect x="450" y="205" width="300" height="34" rx="8" fill="#ffffff" stroke="#b45309"/><text x="600" y="227" text-anchor="middle" font-size="14" fill="#0f172a">2nd · 09:15 · $21.00</text>
+  <rect x="450" y="245" width="300" height="34" rx="8" fill="#ffffff" stroke="#b45309"/><text x="600" y="267" text-anchor="middle" font-size="14" fill="#0f172a">3rd · 18:45 · $12.00</text>
+  <text x="600" y="315" text-anchor="middle" font-size="13" fill="#64748b">No ORDER BY = undefined order</text>
+
+  <!-- Frame -->
+  <rect x="810" y="90" width="360" height="250" rx="12" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="990" y="122" text-anchor="middle" font-size="17" font-weight="700" fill="#134e4a">3 · Frame</text>
+  <text x="990" y="148" text-anchor="middle" font-size="14" fill="#334155">Which rows each row sees</text>
+  <rect x="840" y="165" width="300" height="34" rx="8" fill="#ffffff" stroke="#0d9488" stroke-opacity="0.4"/><text x="990" y="187" text-anchor="middle" font-size="14" fill="#94a3b8">2 PRECEDING · $14.50</text>
+  <rect x="840" y="205" width="300" height="34" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="2.5"/><text x="990" y="227" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">CURRENT ROW · $21.00</text>
+  <rect x="840" y="245" width="300" height="34" rx="8" fill="#ffffff" stroke="#0d9488" stroke-opacity="0.4"/><text x="990" y="267" text-anchor="middle" font-size="14" fill="#94a3b8">1 FOLLOWING · $12.00</text>
+  <text x="990" y="315" text-anchor="middle" font-size="13" fill="#64748b">ROWS BETWEEN 2 PRECEDING AND CURRENT ROW</text>
+
+  <text x="600" y="385" text-anchor="middle" font-size="14" fill="#64748b">Default frame groups peers together — write ROWS BETWEEN … to count rows one at a time.</text>
+</svg>
